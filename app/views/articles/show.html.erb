@@ -1,0 +1,15 @@
+<h1><%= @article.title %></h1>
+
+<!-- Author -->
+<p class="lead">
+  by <a href="#"><%= @article.user.email %></a>
+</p>
+
+<hr>
+
+<!-- Post Content -->
+<%= raw(@article.body) %>
+
+<hr>
+
+<%= link_to 'Back', root_path %>

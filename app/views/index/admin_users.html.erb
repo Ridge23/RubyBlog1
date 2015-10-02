@@ -1,0 +1,35 @@
+<h1>Users</h1>
+<table class="table table-striped">
+    <tbody>
+    <tr>
+      <th>
+        #
+      </th>
+      <th>
+        Email
+      </th>
+      <th>
+
+      </th>
+    </tr>
+    <% @users.each do |user| %>
+        <tr>
+          <td>
+            <%= user.id %>
+          </td>
+          <td>
+            <%= user.email %>
+          </td>
+          <td width="200">
+            <% if user.moderator? %>
+                <%= link_to('[unset moderator]', admin_set_moderator_path(user)) %>
+            <% else %>
+                <%= link_to('[set moderator]', admin_set_moderator_path(user)) %>
+            <% end %>
+            <%= link_to('[remove]', admin_user_remove_path(user)) %>
+
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>

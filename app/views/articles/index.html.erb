@@ -1,0 +1,28 @@
+<h1> My articles</h1>
+
+<% if @articles %>
+
+    <% @articles.each do |article| %>
+
+        <h2><%= article.title %></h2>
+
+        <!-- Author -->
+        <p class="lead">
+          by <a href="#"><%= article.user.email %></a>
+        </p>
+
+        <hr>
+        <!-- Post Content -->
+        <p><%= truncate(strip_tags(article.body), :length => 300 )%></p>
+
+        <%= link_to '[Read full article]', article %>
+        <%= link_to '[Edit]', edit_article_path(article) %>
+        <%= link_to '[Delete]', article, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <hr>
+    <% end %>
+<% else %>
+    <p>You have not written articles yet</p>
+<% end %>
+<br>
+
+<%= link_to 'New Article', new_article_path %>

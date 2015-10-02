@@ -1,0 +1,18 @@
+<% @articles.each do |article| %>
+
+<h2><%= article.title %></h2>
+
+<!-- Author -->
+<p class="lead">
+  by <a href="#"><%= article.user.email %></a>
+</p>
+
+<hr>
+
+<!-- Post Content -->
+<p><%= truncate(strip_tags(article.body), :length => 300 )%></p>
+
+<%= link_to 'Read full article', article %>
+<hr>
+
+<% end %>

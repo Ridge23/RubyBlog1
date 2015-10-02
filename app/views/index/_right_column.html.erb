@@ -1,0 +1,50 @@
+<!-- Blog Sidebar Widgets Column -->
+<div class="col-md-4">
+
+  <!-- Blog Search Well -->
+  <div class="well">
+    <h4>Blog Search</h4>
+
+    <div class="input-group">
+      <input type="text" class="form-control">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">
+          <span class="glyphicon glyphicon-search"></span>
+        </button>
+      </span>
+    </div>
+    <!-- /.input-group -->
+  </div>
+
+  <!-- Blog Categories Well -->
+  <div class="well">
+    <h4>Blog Categories</h4>
+
+    <div class="row">
+      <div class="col-lg-8">
+        <ul class="list-unstyled">
+          <% right_column_users.each do |user| %>
+          <li>
+            <a href="#"><%= user.email %></a>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+
+    </div>
+    <!-- /.row -->
+  </div>
+
+  <!-- Side Widget Well -->
+  <div class="well">
+    <h4>Tags Cloud</h4>
+
+    <p>
+        <% ActsAsTaggableOn::Tag.most_used.each do |tag| %>
+            <%= link_to(tag.name, article_find_by_tag_path(tag.name)) %>
+        <% end %>
+    </p>
+
+  </div>
+
+</div>
